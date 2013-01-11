@@ -8,11 +8,13 @@ app.load(function (err) {
   require(app.plugins.middleware);
   require('./plugins/body-parser');
   require('./plugins/logger');
+  require('cantina-views');
+  require('cantina-auth');
+  require('cantina-session');
   require('./plugins/helpers');
   require(app.plugins.static);
   require(app.plugins.controllers);
-  require('cantina-views');
-  require('cantina-auth');
+
 
   app.views.registerPartials(path.resolve(app.root, 'views/partials'));
   app.init();

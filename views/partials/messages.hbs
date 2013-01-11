@@ -1,0 +1,47 @@
+{{#if messages}}
+  <div class="messages">
+    {{#if messages.success}}
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <ul>
+          {{#each messages.success}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if messages.info}}
+      <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <ul>
+          {{#each messages.info}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if messages.warning}}
+      <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <ul>
+          {{#each messages.warning}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+
+    {{#if messages.error}}
+      <div class="alert alert-error">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <ul>
+          {{#each messages.error}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}

@@ -37,28 +37,35 @@ function processRegister (req, res, next) {
   if (!req.body.full) {
     res.formError('full', 'Full name is required.');
   }
-  if (!req.body.email) {
-    res.formError('email', 'Email is required.');
-  }
-  else if (!app.validators.isEmail(req.body.email)) {
-    res.formError('email', 'Invalid email address.');
-  }
-  if (!req.body.username) {
-    res.formError('username', 'Please choose a username.');
-  }
-  else if (req.body.username.length < 3 || req.body.username.length > 32) {
-    res.formError('username', 'Username must be between 3 and 32 characters long.');
-  }
-  else if (!req.body.username.match(/^[a-zA-Z0-9_]+$/)) {
-    res.formError('username', 'Username must contain letters, numbers, and underscores only.');
-  }
-  if (!req.body.pass) {
-    res.formError('password', 'Please choose a password.');
-  }
-  else if (req.body.pass.length < 5) {
-    res.formError('password', 'Password must be at least 5 characters long.');
-  }
-  if (res.formErrors) {
-    return next();
-  }
+
+  res.setMessage('hello', 'error');
+  res.vars.title = 'Sign up';
+  res.vars.subtitle = 'Opps';
+  res.vars.styles.push('/css/forms.css');
+  res.render('signup', res.vars);
+
+  // if (!req.body.email) {
+  //   res.formError('email', 'Email is required.');
+  // }
+  // else if (!app.validators.isEmail(req.body.email)) {
+  //   res.formError('email', 'Invalid email address.');
+  // }
+  // if (!req.body.username) {
+  //   res.formError('username', 'Please choose a username.');
+  // }
+  // else if (req.body.username.length < 3 || req.body.username.length > 32) {
+  //   res.formError('username', 'Username must be between 3 and 32 characters long.');
+  // }
+  // else if (!req.body.username.match(/^[a-zA-Z0-9_]+$/)) {
+  //   res.formError('username', 'Username must contain letters, numbers, and underscores only.');
+  // }
+  // if (!req.body.pass) {
+  //   res.formError('password', 'Please choose a password.');
+  // }
+  // else if (req.body.pass.length < 5) {
+  //   res.formError('password', 'Password must be at least 5 characters long.');
+  // }
+  // if (res.formErrors) {
+  //   return next();
+  // }
 }

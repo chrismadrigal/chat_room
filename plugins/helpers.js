@@ -22,6 +22,14 @@ app.on('init', function () {
       formErrors[name] = message;
       res.formErrors = res.vars.formErrors = formErrors;
     };
+
     next();
   });
+
+  app.views.helper(function (req, res, callback) {
+    var vars = {};
+    vars.messages = req.session.messages;
+    delete req.session.messages;
+    callback(null, vars);
+  })
 });
