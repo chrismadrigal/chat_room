@@ -5,18 +5,41 @@
   <form method="post" id="account-form" class="form-horizontal well span6" action="/signup">
     <h2>Signup</h2>
     <fieldset>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-envelope"></i></span>
+    <input class="span2" type="text" placeholder="Email address">
+  </div>
+  <div class="input-prepend">
+    <span class="add-on"><i class="icon-key"></i></span>
+    <input class="span2" type="password" placeholder="Password">
+  </div>
+
+<div class="input-prepend">
+  <span class="add-on">@</span>
+  <input class="span2" id="prependedInput" type="text" placeholder="Username">
+</div>
+<div class="input-append">
+  <input class="span2" id="appendedInput" type="text">
+  <span class="add-on">.00</span>
+</div>
+
+
       <div id="name-cg" class="control-group">
-        <label for="name-tf" class="control-label">Name</label>
         <div class="controls">
           <input id="name-tf" type="text" name="name" class="input-xlarge">
         </div>
       </div>
+
+
       <div id="email-cg" class="control-group">
         <label for="email-tf" class="control-label">Email</label>
         <div class="controls">
           <input id="email-tf" type="text" name="email" class="input-xlarge">
         </div>
       </div>
+
+
+
       <div id="clist-cg" class="control-group">
         <label for="country-list" class="control-label">Location</label>
         <div class="controls">

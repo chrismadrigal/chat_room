@@ -34,19 +34,18 @@ function processRegister (req, res, next) {
   //   console.error("Operation not valid");
   //   return next();
   // }
-  if (!req.body.full) {
-    res.formError('full', 'Full name is required.');
-  }
-
-  res.setMessage('hello', 'error');
-  res.vars.title = 'Sign up';
-  res.vars.subtitle = 'Opps';
-  res.vars.styles.push('/css/forms.css');
-  res.render('signup', res.vars);
-
-  // if (!req.body.email) {
-  //   res.formError('email', 'Email is required.');
+  // if (!req.body.full) {
+  //   res.formError('full', 'Full name is required.');
   // }
+
+
+
+  if (!req.body.name) {
+    res.formError('name', 'Name is required.');
+  }
+  if (!req.body.email) {
+    res.formError('email', 'Email is required.');
+  }
   // else if (!app.validators.isEmail(req.body.email)) {
   //   res.formError('email', 'Invalid email address.');
   // }
@@ -65,7 +64,13 @@ function processRegister (req, res, next) {
   // else if (req.body.pass.length < 5) {
   //   res.formError('password', 'Password must be at least 5 characters long.');
   // }
-  // if (res.formErrors) {
-  //   return next();
-  // }
+    if (res.formErrors) {
+      console.log(res.formErrors);
+      // return next();
+    }
+
+  res.vars.title = 'Sign up';
+  res.vars.subtitle = 'Opps';
+  res.vars.styles.push('/css/forms.css');
+  res.render('signup', res.vars);
 }
