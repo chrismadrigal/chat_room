@@ -8,7 +8,9 @@ app.load(function (err) {
   require(app.plugins.middleware);
   require('./plugins/body-parser');
   require('./plugins/logger');
+  require('./plugins/validator.js');
   require('cantina-views');
+  require('cantina-mysql');
   require('cantina-auth');
   require('cantina-session');
   require('./plugins/helpers');
