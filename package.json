@@ -1,0 +1,25 @@
+{
+  "author": "Chris Madrigal",
+  "name": "chat_room",
+  "version": "0.0.0",
+  "description": "A super awesome chat app build on node.js",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+
+  "license": "BSD",
+  "dependencies": {
+    "cantina": "git+ssh://git@github.com:cantina/cantina.git#2.x",
+    "cantina-views": "git+ssh://git@github.com:cantina/cantina-views.git#2.x",
+    "cantina-mysql": "git+ssh://git@github.com:cantina/cantina-mysql.git#v2.0.1",
+    "cantina-auth": "git+ssh://git@github.com:cantina/cantina-auth.git#2.x",
+    "handlebars": "~1.0.7"
+  },
+    "devDependencies": {
+    "mocha": "*",
+    "migrate": "~0.1.3"
+  }
+}

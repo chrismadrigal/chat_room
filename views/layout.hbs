@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>{{site_title}}</title>
+    {{> styles}}
+    {{> scripts}}
+  </head>
+  <body>
+    <div id="page_wrapper">
+      <!-- Header -->
+      <div id="header">
+        <div class="container">
+          <h1>{{title}}</h1>
+            {{#if subtitle}}
+              <h2 class="sub-title">
+                {{subtitle}}
+              </h2>
+            {{/if}}
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div id="main_content">
+        <div class="container">
+          {{{content}}}
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+
+
+    <div id="footer">
+      <div class="container">
+        {{> footer}}
+      </div>
+    </div>
+  </body>
+</html>
