@@ -7,6 +7,7 @@ module.exports = function (filename) {
   filename = path.resolve(app.root, 'migrations', filename);
   return task(function sql (app, next) {
     if (fs.existsSync(filename)) {
+
       fs.readFile(filename, 'utf8', function (err, data) {
         if (err) throw err;
         app.mysql.query(data, function(err) {
@@ -37,7 +38,7 @@ module.exports = function (filename) {
       });
     }
     else {
-      throw new Error('Could not find ' + filename);
+      console.error('Could not find ' + filename)
     }
   });
 };

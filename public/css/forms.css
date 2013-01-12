@@ -60,25 +60,7 @@ vertical-align: top;
 -moz-border-radius: 0 4px 4px 0;
 border-radius: 0 4px 4px 0;
 }
-
-/**
- * Login Form
- */
-
-/*#login-form {
-    min-height: 20px;
-    padding: 19px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.85);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0px 2px 0px white, 0px 0px 10px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: inset 0px 2px 0px white, 0px 0px 10px rgba(0, 0, 0, 0.7);
-    box-shadow: inset 0px 2px 0px white, 0px 0px 10px rgba(0, 0, 0, 0.7);
-}*/
-
-label{
+label {
   display: none !important;
 }
 .form-horizontal .controls {
@@ -123,11 +105,13 @@ display:block;
   margin-bottom: 10px;
 }
 #signup-form .btn-block i,
-#login-form .btn-block i{
+#login-form .btn-block i {
   padding-left: 5px;
   font-size:18px;
 }
-
+/**
+ * Login form.
+ */
 #login-form .toggle-wrapper{
   padding-top: 5px;
 }

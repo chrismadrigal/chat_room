@@ -5,13 +5,12 @@ body {
 body {
   background: url("../img/bg.png") repeat;
 }
-h1, h2, h3, h4, h5{
+h1, h2, h3, h4, h5 {
   font-family: 'Droid Sans', sans-serif;
 }
-p, a{
+p, a {
 font-family: 'Lato', sans-serif;
 }
-
 #page_wrapper {
   min-height: 100%;
   height: auto !important;
@@ -32,7 +31,7 @@ font-family: 'Lato', sans-serif;
 #header .container {
   padding-top: 25px;
 }
-#header .container h1{
+#header .container h1 {
   color: #fff;
   font-size: 3.9em;
   font-family: 'Droid Sans', sans-serif;
