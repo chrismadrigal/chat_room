@@ -18,19 +18,31 @@ function values (req, res, next) {
 
 function login (req, res, next) {
   res.vars.title = 'Login';
-  res.vars.styles.push('/css/forms.css');
+  res.vars.styles.push(
+    '/css/forms.css',
+    'vendor/bootstrap/css/bootstrap-toggle-buttons.css'
+  );
+  res.vars.scripts.push(
+    '/vendor/jquery/jquery.form.js',
+    '/vendor/bootstrap/js/jquery.toggle.buttons.js',
+    '/js/login.js'
+  );
   res.render('login', res.vars);
 }
 
 function processLogin (req, res, next) {
-  var users = app.mysql.query("SELECT * FROM users WHERE name = ? AND ");
+  var users = app.mysql.query("SELECT * FROM users WHERE name = ? AND password = ?");
 }
 
 function register (req, res, next) {
   res.vars.title = 'Sign up';
   res.vars.subtitle = 'Create your user account';
   res.vars.styles.push('/css/forms.css');
-  res.vars.scripts.push('/vendor/jquery/jquery.form.js','js/form-validators/account-validator.js', '/js/signup.js');
+  res.vars.scripts.push(
+    '/vendor/jquery/jquery.form.js',
+    '/js/form-validators/account-validator.js',
+    '/js/signup.js'
+  );
   res.render('signup', res.vars);
 }
 

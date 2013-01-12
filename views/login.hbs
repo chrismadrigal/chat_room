@@ -1,16 +1,56 @@
 <div id="login-container">
-  <form method="post" id="login-form" class="" action="/login">
+  <form method="post" id="login-form" class="form-horizontal well span6" action="/login">
     <h2>Login To Your Account</h2>
-    <label>Username </label>
-    <input type="text" name="user" id="user-tf" class="span4 required">
-    <label>Password</label>
-    <input type="password" name="pass" id="pass-tf" class="span4 required">
-    <button type="submit" id="btn-login" class="btn btn-primary"><i class="icon-lock icon-white"></i>  Sign in</button>
-    <label id="remember-me" class="checkbox">Remember Me
-      <input type="checkbox" checked="checked">
-    </label>
-    <div class="clear-fix"></div>
+    {{> messages}}
+    <fieldset>
+
+        <div id="username-cg" class="control-group">
+          <div class="controls input-prepend">
+            <label for="field-username" class="control-label">Username</label>
+            <span class="add-on"><i class="icon-user"></i></span>
+            <input id="field-username" type="text" name="username" value="{{values.username}}" class="input-xlarge" placeholder="User name">
+          </div>
+        </div>
+
+        <div id="password-cg" class="control-group">
+          <div class="controls input-prepend">
+            <label for="field-password" class="control-label">Password</label>
+            <span class="add-on"><i class="icon-key"></i></span>
+            <input id="field-password" type="password" name="password" class="input-xlarge" placeholder="Password">
+          </div>
+        </div>
+
+
+      <div class="form-actions">
+        <div class="row-fluid">
+          <div class="toggle-wrapper span6">
+            <div id="remember-me-toggle">
+              <input type="checkbox" checked="checked">
+            </div>
+            <span id="remember-me">Remember me</span>
+          </div>
+
+
+
+          <div class="span6" style="float:right;">
+            <button type="submit" id="btn-login" class="btn btn-large btn-block btn-primary">Sign in <i class="icon-lock icon-white"></i></button>
+          </div>
+        </div>
+
+      </div>
+
+    </fieldset>
+
     <hr>
-    <div class="btm-links"><a href="#" id="forgot-password">Forgot Your Password? </a><a href="/signup" id="create-account">Create An Account</a></div>
+    <div class="btm-links">
+      <a href="#" id="forgot-password">Forgot Your Password? </a>
+      <a href="/signup" id="create-account">Create An Account</a>
+    </div>
+
   </form>
 </div>
+
+{{> modals.alert}}
+{{> modals.form-errors}}
+
+
