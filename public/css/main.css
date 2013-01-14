@@ -15,13 +15,18 @@ font-family: 'Lato', sans-serif;
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  /* Negative indent footer by it's height */
   margin: 0 auto -45px;
 }
 .container {
   width: auto;
-  max-width: 680px;
+  max-width: 960px;
+}
+#main_content .container,
+#footer .container {
   padding-top: 15px;
+}
+.navbar {
+margin-bottom: 0;
 }
 #header {
   background: rgba(32, 79, 33, 0.3);
