@@ -1,23 +1,66 @@
+$(document).ready(function() {
 
-$(document).ready(function(){
+  var lv = new LoginValidator();
+  //var lc = new LoginController();
 
+  // main login form //
 
-  $('#remember-me-toggle').toggleButtons({
-    // width: 220,
-    // height: 36,
-    label: {
-        enabled: "Yes",
-        disabled: "No"
+  $('#login-form').ajaxForm({
+    beforeSubmit : function(formData, jqForm, options) {
+      if (lv.validateForm() == false){
+        console.log("Return true");
+        return false;
+      }
+      else {
+      // append 'remember-me' option to formData to write local cookie //
+        formData.push({name:'remember-me', value:$("input:checkbox:checked").length == 1});
+        return true;
+      }
     },
-    label: {
-        enabled: "Yes",
-        disabled: "No"
+    success : function(responseText, status, xhr, $form) {
+      if (status == 'success') window.location.href = '/';
     },
-    style: {
-        // Accepted values ["primary", "danger", "info", "success", "warning"] or nothing
-        enabled: "success",
-
+    error : function(e) {
+      lv.showLoginError('Login Failure', 'Please check your username and/or password');
     }
   });
+  $('#field-username').focus();
 
+  // login retrieval form via email //
+
+  // var ev = new EmailValidator();
+
+  // $('#get-credentials-form').ajaxForm({
+  //   url: '/lost-password',
+  //   beforeSubmit : function(formData, jqForm, options){
+  //     if (ev.validateEmail($('#email-tf').val())){
+  //       ev.hideEmailAlert();
+  //       return true;
+  //     } else{
+  //       ev.showEmailAlert("<b> Error!</b> Please enter a valid email address");
+  //       return false;
+  //     }
+  //   },
+  //   success : function(responseText, status, xhr, $form){
+  //     ev.showEmailSuccess("Check your email on how to reset your password.");
+  //   },
+  //   error : function(){
+  //     ev.showEmailAlert("Sorry. There was a problem, please try again later.");
+  //   }
+  // });
+
+  // set the toggle button
+  $('#remember-me-toggle').toggleButtons({
+    label: {
+      enabled: "Yes",
+      disabled: "No"
+    },
+    label: {
+      enabled: "Yes",
+      disabled: "No"
+    },
+    style: {
+      enabled: "success",
+    }
+  });
 })

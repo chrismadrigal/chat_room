@@ -12,7 +12,7 @@ app.on('init', function () {
   });
 
   app.middleware.add(function (req, res, next) {
-    console.log(req.method + ': ' + req.url);
+    // console.log(req.method + ': ' + req.url);
     next();
   });
 });

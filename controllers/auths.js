@@ -7,7 +7,7 @@ var app = require('cantina')
 module.exports = controller;
 
 controller.get('/login', login);
-controller.post('/login', processLogin);
+controller.post('/login', processLogin, login);
 controller.get('/signup', values, register);
 controller.post('/signup', values, processRegister);
 
@@ -24,14 +24,45 @@ function login (req, res, next) {
   );
   res.vars.scripts.push(
     '/vendor/jquery/jquery.form.js',
-    '/vendor/bootstrap/js/jquery.toggle.buttons.js',
-    '/js/login.js'
+    '/vendor/bootstrap/js/jquery.toggle.buttons.js'
+    // '/js/form-validators/loginValidator.js',
+    // '/js/login.js'
   );
   res.render('login', res.vars);
 }
 
 function processLogin (req, res, next) {
-  var users = app.mysql.query("SELECT * FROM users WHERE name = ? AND password = ?");
+
+  if (!req.body.username) {
+    res.formError('username', 'Please enter a username.');
+  }
+  if (!req.body.password) {
+    res.formError('password', 'Please enter a password.');
+  }
+  if (res.formErrors) {
+    res.vars.subtitle = 'Opps we found some errors :-(';
+    next();
+  }
+  else {
+    var values = [req.body.username, hashPass(req.body.password)];
+
+    app.mysql.query('SELECT id, username, password FROM users WHERE username = ? AND password = ? ', values, function (err, res) {
+      if (err) console.error(err);
+
+      var user = res[0];
+
+      if (!user) {
+        // res.setMessage('Wrong usename and password combination', 'error');
+        return next();
+      }
+
+      req.login(user, function(err){
+        //if (err) return console.error(err, "Error before the redirect on req.logIn callback");
+        return res.redirect('/');
+      });
+    });
+  }
+
 }
 
 function register (req, res, next) {
@@ -90,16 +121,15 @@ function processRegister (req, res, next) {
       //created : new Date().getTime()
     }
 
-    console.log(user);
     app.mysql.query("INSERT INTO users SET ? ", user, function(err, result) {
       if (err) console.error(err);
       res.setMessage('Success fucker!', 'success');
       res.redirect('/login');
     });
-
   }
 }
 
 function hashPass (pass) {
   return crypto.createHash('sha1').update(pass).digest('hex');
 }
+

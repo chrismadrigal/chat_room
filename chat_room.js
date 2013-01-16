@@ -11,9 +11,10 @@ app.load(function (err) {
   require('./plugins/validator.js');
   require('cantina-views');
   require('cantina-mysql');
-  require('cantina-auth');
   require('cantina-session');
+  require('cantina-auth');
   require('./plugins/helpers');
+  require('./plugins/user-auth');
   require(app.plugins.static);
   require(app.plugins.controllers);
 
