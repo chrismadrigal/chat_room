@@ -2,14 +2,12 @@ var app = require('cantina')
   , controller = app.controller()
   , crypto = require('crypto');
 
-
-
 module.exports = controller;
 
 controller.get('/login', login);
-controller.post('/login', processLogin, login);
-controller.get('/signup', values, register);
-controller.post('/signup', values, processRegister);
+controller.post('/login', [processLogin, login]);
+controller.get('/signup', [values, register]);
+controller.post('/signup', [values, processRegister]);
 
 function values (req, res, next) {
   res.vars.values = req.body || {};
@@ -46,10 +44,10 @@ function processLogin (req, res, next) {
   else {
     var values = [req.body.username, hashPass(req.body.password)];
 
-    app.mysql.query('SELECT id, username, password FROM users WHERE username = ? AND password = ? ', values, function (err, res) {
+    app.mysql.query('SELECT id, username, password FROM users WHERE username = ? AND password = ? ', values, function (err, result) {
       if (err) console.error(err);
 
-      var user = res[0];
+      var user = result[0];
 
       if (!user) {
         // res.setMessage('Wrong usename and password combination', 'error');
@@ -57,7 +55,8 @@ function processLogin (req, res, next) {
       }
 
       req.login(user, function(err){
-        //if (err) return console.error(err, "Error before the redirect on req.logIn callback");
+        if (err) return console.error(err);
+        // next();
         return res.redirect('/');
       });
     });
@@ -106,7 +105,7 @@ function processRegister (req, res, next) {
     res.formError('password', 'Password must be at least 5 characters long.');
   }
   if (res.formErrors) {
-    console.log(res.formErrors);
+    console.error(res.formErrors);
     res.vars.title = 'Sign up';
     res.vars.subtitle = 'Opps';
     res.vars.styles.push('/css/forms.css');

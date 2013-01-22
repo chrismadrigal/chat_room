@@ -1,6 +1,9 @@
 var app = require('cantina');
 
-app.on('init', function () {
+require(app.plugins.middleware);
+
+  // app.middleware.first(require('expres').middleware);
+
   app.middleware.add(function (req, res, next) {
     res.vars = res.vars || {};
     res.vars.site_title = app.conf.get('title');
@@ -38,4 +41,4 @@ app.on('init', function () {
     delete req.session.messages;
     callback(null, vars);
   })
-});
+

@@ -8,7 +8,6 @@ $(document).ready(function() {
   $('#login-form').ajaxForm({
     beforeSubmit : function(formData, jqForm, options) {
       if (lv.validateForm() == false){
-        console.log("Return true");
         return false;
       }
       else {

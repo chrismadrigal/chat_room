@@ -17,7 +17,8 @@
     "cantina-mysql": "git+ssh://git@github.com:cantina/cantina-mysql.git#v2.0.1",
     "cantina-auth": "git+ssh://git@github.com:cantina/cantina-auth.git#2.x",
     "cantina-session": "git+ssh://git@github.com:cantina/cantina-session.git#2.x",
-    "handlebars": "~1.0.7"
+    "handlebars": "~1.0.7",
+    "expres": "~0.0.1"
   },
     "devDependencies": {
     "mocha": "*",
